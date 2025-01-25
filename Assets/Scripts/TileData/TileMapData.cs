@@ -7,9 +7,7 @@ using UnityEngine.Tilemaps;
 public class TileMapData : MonoBehaviour
 {
     public Tilemap tileMap;
-    public Grid grid;
-
-    public List<GameObject> _MovementPoints;
+    public List<MovementPoint> _MovementPoints;
 
     // Start is called before the first frame update
     void Start()

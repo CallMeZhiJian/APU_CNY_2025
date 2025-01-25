@@ -11,6 +11,9 @@ public class MovementPoint : MonoBehaviour
 {
     private TileMapData _TileMapData;
     public FoodType _FoodType;
+    public Vector3 initPos;
+    public float amplitude;
+    public float frequency;
 
     void Awake()
     { 
@@ -18,6 +21,17 @@ public class MovementPoint : MonoBehaviour
 
         var pos = _TileMapData.tileMap.WorldToCell(transform.position) + _TileMapData.tileMap.tileAnchor;
         transform.position = pos;
+
+        initPos = transform.position;
+
+        amplitude = Random.Range(0.01f, 0.03f);
+    }
+
+    private void Update()
+    {
+        var offset = Mathf.Sin(frequency * Time.time) * amplitude * 0.1f;
+
+        transform.position += new Vector3(0.0f, offset, 0.0f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

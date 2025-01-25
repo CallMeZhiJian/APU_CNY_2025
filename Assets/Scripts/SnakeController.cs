@@ -68,15 +68,15 @@ public class SnakeController : MonoBehaviour
 
                 if (currentPoint == 0)
                 {
-                    lastPointPos = _tileMapData._MovementPoints[currentPoint].transform.position;
+                    lastPointPos = _tileMapData._MovementPoints[currentPoint].initPos;
                 }
                 else
                 {
-                    lastPointPos = _tileMapData._MovementPoints[currentPoint - 1].transform.position;
+                    lastPointPos = _tileMapData._MovementPoints[currentPoint - 1].initPos;
                 }
 
                 // Get and assign target position
-                var nextPointPos = _tileMapData._MovementPoints[currentPoint].transform.position;
+                var nextPointPos = _tileMapData._MovementPoints[currentPoint].initPos;
                 targetPosition = nextPointPos;
 
                 direction = nextPointPos - lastPointPos;
