@@ -19,12 +19,12 @@ public class MovementPoint : MonoBehaviour
     { 
         _TileMapData = FindObjectOfType<TileMapData>();
 
-        var pos = _TileMapData.tileMap.WorldToCell(transform.position) + _TileMapData.tileMap.tileAnchor;
+        var pos = _TileMapData._MaptileMap.WorldToCell(transform.position) + _TileMapData._MaptileMap.tileAnchor;
         transform.position = pos;
 
         initPos = transform.position;
 
-        amplitude = Random.Range(0.01f, 0.03f);
+        amplitude = Random.Range(0.01f, 0.025f);
     }
 
     private void Update()
@@ -45,6 +45,7 @@ public class MovementPoint : MonoBehaviour
             if (_FoodType == FoodType.SPECIAL)
             {
                 Debug.Log("Do something special");
+                collision.gameObject.GetComponent<SnakeController>().TriggerPopUp();
             }
         }
     }
