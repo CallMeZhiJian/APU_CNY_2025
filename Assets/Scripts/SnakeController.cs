@@ -4,6 +4,7 @@ using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Tilemaps;
+using UnityEngine.UIElements;
 
 enum Direction
 {
@@ -109,17 +110,22 @@ public class SnakeController : MonoBehaviour
                         switch (_CurrentDirection)
                         {
                             case Direction.UP:
+                                tileTransform = Matrix4x4.Rotate(Quaternion.Euler(0.0f, 0.0f, -90.0f));
+                                tile = _StraightBodyTileBase;
+                                break;
                             case Direction.DOWN:
                                 tileTransform = Matrix4x4.Rotate(Quaternion.Euler(0.0f, 0.0f, 90.0f));
                                 tile = _StraightBodyTileBase;
                                 break;
                             case Direction.LEFT:
+                                tile = _StraightBodyTileBase;
+                                break;
                             case Direction.RIGHT:
+                                tileTransform = Matrix4x4.Rotate(Quaternion.Euler(0.0f, 0.0f, 180.0f));
                                 tile = _StraightBodyTileBase;
                                 break;
                             case Direction.RIGHT_UP:
                                 tile = _TurningBodyTileBase;
-                                tileTransform = Matrix4x4.Rotate(Quaternion.Euler(0.0f, 0.0f, 0.0f));
                                 break;
                             case Direction.RIGHT_DOWN:
                                 tile = _TurningBodyTileBase;
